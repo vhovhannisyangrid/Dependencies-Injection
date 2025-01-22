@@ -1,8 +1,7 @@
 import { ioc } from './ioc';
 import { Users } from './services/users';
 
-const renderUsers = async (usersService: any) => {
-  if (usersService instanceof Users) {
+const renderUsers = async (usersService: Users) => {
     const users = await usersService.getUsers();
     const listNode = document.getElementById('users-list');
   
@@ -11,8 +10,6 @@ const renderUsers = async (usersService: any) => {
       listItemNode.innerHTML = user.name;
       listNode.appendChild(listItemNode);
     });
-  }
-
 };
 
 const app = async () => {
